@@ -1,7 +1,7 @@
 # 📊 BÁO CÁO THU HOẠCH NGHIỆM THU BÀI LAB 3 (BƯỚC 3 — SUBMISSION ARTIFACT)
 
-> **Họ và Tên Học viên:** [Điền Họ và Tên]  
-> **Mã Sinh Viên / Mã Học viên:** [Điền MSSV]  
+> **Họ và Tên Học viên:** Trần Nam Anh  
+> **Mã Sinh Viên / Mã Học viên:** 2A202602901  
 > **Chủ đề Lựa chọn:**  Trợ lý Quản lý Thư viện & Tài liệu: Tra cứu vị trí sách, tình trạng mượn/trả và gia hạn tài liệu.
 
 ---
@@ -10,11 +10,11 @@
 
 | Tiêu chí Đánh giá | Mức độ (1 - 5) | Giải trình chi tiết lý do chọn điểm |
 | :--- | :---: | :--- |
-| **1. Multi-step Reasoning** | 2/ 5 | Bài toán có yêu cầu chia nhỏ nhiều bước suy luận nối tiếp nhau không? |
-| **2. Tool Interaction** | 3/ 5 | Hệ thống có cần kết nối với MCP Server / Cơ sở dữ liệu bên ngoài không? |
-| **3. Dynamic Decision** | 4/ 5 | Bước tiếp theo có phụ thuộc vào kết quả quan sát bước trước không? |
-| **4. Long Horizon Goal** | 3/ 5 | Hệ thống có phải giữ mục tiêu xuyên suốt qua nhiều lượt xử lý không? |
-| **TỔNG ĐIỂM AGENTIC FIT** | **12/ 20** | *Nếu tổng điểm > 12/20: Bài toán rất phù hợp triển khai Agentic System.* |
+| **1. Multi-step Reasoning** | 3/ 5 | Bài toán có các tác vụ đòi hỏi suy luận tuần tự nhiều bước (ví dụ: TC04 yêu cầu kiểm tra tình trạng sách trước, nếu đang mượn thì mới tính toán thời hạn và kích hoạt bước gia hạn tiếp theo). |
+| **2. Tool Interaction** | 4/ 5 | Hệ thống bắt buộc phải tương tác với MCP Server bên ngoài qua các công cụ chuyên biệt (`get_book_location`, `get_book_status`, `renew_book_loan`) để truy xuất và cập nhật cơ sở dữ liệu sách theo thời gian thực. |
+| **3. Dynamic Decision** | 4/ 5 | Bước kế tiếp phụ thuộc hoàn toàn vào kết quả quan sát (Observation) từ Tool trước: Nếu sách đang mượn (`BORROWED`) thì cho phép gia hạn; nếu sách sẵn sàng (`AVAILABLE`) hoặc không tồn tại (`NOT_FOUND`) thì dừng và trả về thông báo phù hợp. |
+| **4. Long Horizon Goal** | 3/ 5 | Agent cần duy trì mục tiêu của người dùng xuyên suốt chuỗi đối thoại (từ tra cứu tình trạng đến thực hiện gia hạn thành công) và kiểm soát trạng thái giao dịch mượn/trả hoàn tất. |
+| **TỔNG ĐIỂM AGENTIC FIT** | **14/ 20** | *Nếu tổng điểm > 12/20: Bài toán rất phù hợp triển khai Agentic System.* |
 
 ---
 
@@ -60,7 +60,7 @@ Dán 1 đoạn trích xuất log tiêu biểu từ file `docs/trace_waterfall.js
 
 - [ x] Đã điền API Key thật trong `.env` và xác nhận Agent chạy mượt mà trên LLM API thật (Gemini/OpenAI).
 - **Tổng số Test Cases đã chạy thành công:** 5 / 5 test cases.
-- **Số lượt gọi Tool qua MCP Server chính xác:** 2 lượt.
+- **Số lượt gọi Tool qua MCP Server chính xác:** 4 lượt.
 - **Kết quả đẩy Repo nộp bài:** [ x] Đã Commit và Push mã nguồn thành công lên GitHub cá nhân.
 
 ---
