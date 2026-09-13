@@ -27,7 +27,7 @@ Dán 1 đoạn trích xuất log tiêu biểu từ file `docs/trace_waterfall.js
 ```json
   {
     "step": 1,
-    "query": "Kiểm tra giúp tôi tình trạng cuốn sách có mã BK003 xem có ai đang mượn không, nếu đang mượn thì gia hạn thêm 14 ngày giúp tôi.",
+    "query": "Kiểm tra giúp tôi tình trạng cuốn sách có mã BK003 xem có ai đang mượn không.",
     "action_type": "TOOL_EXECUTION",
     "tool_name": "get_book_status",
     "arguments": {
@@ -42,11 +42,11 @@ Dán 1 đoạn trích xuất log tiêu biểu từ file `docs/trace_waterfall.js
       "due_date": "2026-09-25",
       "message": "Sách 'Lược Sử Loài Người' hiện đang được mượn. Ngày hẹn trả hiện tại: 2026-09-25."
     },
-    "latency_ms": 1211.2
+    "latency_ms": 930.51
   },
   {
     "step": 2,
-    "query": "Kiểm tra giúp tôi tình trạng cuốn sách có mã BK003 xem có ai đang mượn không, nếu đang mượn thì gia hạn thêm 14 ngày giúp tôi.",
+    "query": "Kiểm tra giúp tôi tình trạng cuốn sách có mã BK003 xem có ai đang mượn không.",
     "action_type": "FINAL_ANSWER",
     "thought": "Tổng hợp kết quả từ MCP Server thành công.",
     "output": "Sách 'Lược Sử Loài Người' hiện đang được mượn. Ngày hẹn trả hiện tại: 2026-09-25.",

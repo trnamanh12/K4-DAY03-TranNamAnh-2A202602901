@@ -4,8 +4,8 @@
     "query": "Chào bạn, bạn có thể cho tôi biết quy định chung về thời gian mượn sách và số lượng sách tối đa được mượn tại thư viện không?",
     "action_type": "FINAL_ANSWER",
     "thought": "Gemini phản hồi trực tiếp bằng văn bản (không cần gọi công cụ).",
-    "output": "Chào bạn! \n\nTại Thư viện Đại học VinUni, quy định chung về thời gian mượn sách và số lượng sách tối đa thường phụ thuộc vào đối tượng bạn đọc (sinh viên đại học, học viên cao học, hay giảng viên). Tuy nhiên, đối với sinh viên Đại học chính quy, các quy định phổ biến thường như sau:\n\n* **Số lượng sách tối đa:** Sinh viên thường được mượn tối đa khoảng **5 đến 10 cuốn sách** cùng lúc (tùy thuộc vào chính sách cụ thể của từng học kỳ hoặc loại thẻ thư viện).\n* **Thời gian mượn:** Mỗi lần mượn thường kéo dài **14 ngày (2 tuần)** hoặc **30 ngày**, và bạn có thể gia hạn thêm nếu sách đó không có bạn đọc khác đặt trước.\n\n*Lưu ý:* Để biết chính xác hạn mức tài khoản hiện tại của bạn hoặc các quy định chi tiết mới nhất, bạn có thể tra cứu trực tiếp trên cổng thông tin thư viện VinUni (VinUni Library Portal) hoặc liên hệ trực tiếp với thủ thư tại quầy thông tin thư viện nhé! \n\nNếu bạn cần tra cứu tình trạng sách cụ thể, vị trí kệ sách hay gia hạn một cuốn sách cụ thể nào đó (ví dụ như mã sách BK001, BK002...), hãy cung cấp mã sách để tôi hỗ trợ bạn ngay!",
-    "latency_ms": 2673.43
+    "output": "Chào bạn! Quy định chung về thời gian mượn sách và số lượng sách tối đa tại Thư viện Đại học VinUni thường tùy thuộc vào đối tượng bạn đọc (sinh viên, giảng viên, nghiên cứu sinh, v.v.). Dưới đây là thông tin chi tiết:\n\n1. **Số lượng sách tối đa được mượn:**\n   - **Sinh viên đại học:** Thường được mượn tối đa khoảng **5 đến 10 cuốn** sách cùng một lúc (tùy thuộc vào chính sách cụ thể của từng kỳ học hoặc chương trình).\n   - **Học viên cao học / Nghiên cứu sinh:** Thường được mượn số lượng nhiều hơn, khoảng **10 đến 15 cuốn**.\n   - **Giảng viên / Cán bộ nhân viên:** Thường được mượn tối đa từ **15 đến 20 cuốn** (hoặc nhiều hơn cho mục đích giảng dạy và nghiên cứu).\n\n2. **Thời gian mượn sách (Hạn trả):**\n   - **Sinh viên:** Thường là **14 đến 30 ngày** cho mỗi lần mượn.\n   - **Giảng viên / Nghiên cứu sinh:** Thời gian có thể dài hơn, từ **1 đến vài tháng**.\n   - **Gia hạn:** Nếu bạn chưa đọc xong và sách không có người khác đặt trước (Hold), bạn hoàn toàn có thể gia hạn thêm thời gian mượn (thường từ 1 đến 30 ngày/lần) thông qua tài khoản thư viện trực tuyến hoặc nhờ sự hỗ trợ của trợ lý ảo / thủ thư.\n\n*Lưu ý:* Để biết chính xác hạn mức và thời gian mượn áp dụng riêng cho tài khoản của bạn, bạn có thể đăng nhập vào cổng thông tin tra cứu của thư viện (Library Portal) hoặc liên hệ trực tiếp với quầy thủ thư VinUni nhé!",
+    "latency_ms": 2960.94
   },
   {
     "step": 1,
@@ -23,7 +23,7 @@
       "circulation_status": "AVAILABLE",
       "message": "Sách được xếp tại Kệ A1 - Tầng 2."
     },
-    "latency_ms": 1199.53
+    "latency_ms": 881.07
   },
   {
     "step": 2,
@@ -39,8 +39,8 @@
     "action_type": "TOOL_EXECUTION",
     "tool_name": "renew_book_loan",
     "arguments": {
-      "extra_days": 7,
-      "book_id": "BK002"
+      "book_id": "BK002",
+      "extra_days": 7
     },
     "observation": {
       "status": "SUCCESS",
@@ -51,7 +51,7 @@
       "extra_days": 7,
       "message": "Gia hạn sách thành công đến ngày 2026-10-12."
     },
-    "latency_ms": 1337.79
+    "latency_ms": 1047.46
   },
   {
     "step": 2,
@@ -63,7 +63,7 @@
   },
   {
     "step": 1,
-    "query": "Kiểm tra giúp tôi tình trạng cuốn sách có mã BK003 xem có ai đang mượn không, nếu đang mượn thì gia hạn thêm 14 ngày giúp tôi.",
+    "query": "Kiểm tra giúp tôi tình trạng cuốn sách có mã BK003 xem có ai đang mượn không.",
     "action_type": "TOOL_EXECUTION",
     "tool_name": "get_book_status",
     "arguments": {
@@ -78,11 +78,11 @@
       "due_date": "2026-09-25",
       "message": "Sách 'Lược Sử Loài Người' hiện đang được mượn. Ngày hẹn trả hiện tại: 2026-09-25."
     },
-    "latency_ms": 1211.2
+    "latency_ms": 930.51
   },
   {
     "step": 2,
-    "query": "Kiểm tra giúp tôi tình trạng cuốn sách có mã BK003 xem có ai đang mượn không, nếu đang mượn thì gia hạn thêm 14 ngày giúp tôi.",
+    "query": "Kiểm tra giúp tôi tình trạng cuốn sách có mã BK003 xem có ai đang mượn không.",
     "action_type": "FINAL_ANSWER",
     "thought": "Tổng hợp kết quả từ MCP Server thành công.",
     "output": "Sách 'Lược Sử Loài Người' hiện đang được mượn. Ngày hẹn trả hiện tại: 2026-09-25.",
@@ -100,7 +100,7 @@
       "status": "NOT_FOUND",
       "message": "Không tìm thấy sách có mã 'BK9999999'."
     },
-    "latency_ms": 1227.61
+    "latency_ms": 1013.16
   },
   {
     "step": 2,

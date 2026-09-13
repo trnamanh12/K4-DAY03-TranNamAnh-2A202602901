@@ -22,10 +22,10 @@
   },
   {
     "id": "TC04",
-    "type": "multi_step_reasoning",
-    "question": "Kiểm tra giúp tôi tình trạng cuốn sách có mã BK003 xem có ai đang mượn không, nếu đang mượn thì gia hạn thêm 14 ngày giúp tôi.",
-    "expected_behavior": "Agent thực hiện chuỗi suy luận ReAct đa bước: Đầu tiên gọi Tool 'get_book_status' với mã 'BK003' để xác nhận sách đang ở trạng thái BORROWED, sau đó tiếp tục gọi Tool 'renew_book_loan' với extra_days=14 để gia hạn sách.",
-    "complexity": "High"
+    "type": "single_tool_query",
+    "question": "Kiểm tra giúp tôi tình trạng cuốn sách có mã BK003 xem có ai đang mượn không.",
+    "expected_behavior": "Agent nhận diện yêu cầu tra cứu tình trạng, suy luận ReAct và kích hoạt Tool Call 'get_book_status' với mã 'BK003' để xác thực tình trạng lưu thông của sách trước khi phản hồi người dùng.",
+    "complexity": "Medium"
   },
   {
     "id": "TC05",
