@@ -1,29 +1,113 @@
 [
   {
     "step": 1,
-    "query": "Chào bạn, bạn có thể giới thiệu quy chế học vụ cơ bản của Đại học VinUni không?",
+    "query": "Chào bạn, bạn có thể cho tôi biết quy định chung về thời gian mượn sách và số lượng sách tối đa được mượn tại thư viện không?",
     "action_type": "FINAL_ANSWER",
-    "thought": "Câu hỏi chung về quy chế học vụ, trả lời trực tiếp không cần gọi Tool.",
-    "output": "[Mock Agent Response]: Xin chào! Quy chế học vụ VinUni yêu cầu sinh viên tích lũy tối thiểu 120 tín chỉ và duy trì GPA trên 2.0 để tốt nghiệp.",
-    "latency_ms": 2845.93
+    "thought": "Gemini phản hồi trực tiếp bằng văn bản (không cần gọi công cụ).",
+    "output": "Chào bạn! \n\nTại Thư viện Đại học VinUni, quy định chung về thời gian mượn sách và số lượng sách tối đa thường phụ thuộc vào đối tượng bạn đọc (sinh viên đại học, học viên cao học, hay giảng viên). Tuy nhiên, đối với sinh viên Đại học chính quy, các quy định phổ biến thường như sau:\n\n* **Số lượng sách tối đa:** Sinh viên thường được mượn tối đa khoảng **5 đến 10 cuốn sách** cùng lúc (tùy thuộc vào chính sách cụ thể của từng học kỳ hoặc loại thẻ thư viện).\n* **Thời gian mượn:** Mỗi lần mượn thường kéo dài **14 ngày (2 tuần)** hoặc **30 ngày**, và bạn có thể gia hạn thêm nếu sách đó không có bạn đọc khác đặt trước.\n\n*Lưu ý:* Để biết chính xác hạn mức tài khoản hiện tại của bạn hoặc các quy định chi tiết mới nhất, bạn có thể tra cứu trực tiếp trên cổng thông tin thư viện VinUni (VinUni Library Portal) hoặc liên hệ trực tiếp với thủ thư tại quầy thông tin thư viện nhé! \n\nNếu bạn cần tra cứu tình trạng sách cụ thể, vị trí kệ sách hay gia hạn một cuốn sách cụ thể nào đó (ví dụ như mã sách BK001, BK002...), hãy cung cấp mã sách để tôi hỗ trợ bạn ngay!",
+    "latency_ms": 2673.43
   },
   {
     "step": 1,
-    "query": "Hãy tra cứu thông tin học vụ của sinh viên SV2026001.",
+    "query": "Hãy kiểm tra vị trí kệ sách của cuốn sách có mã BK001 giúp tôi.",
     "action_type": "TOOL_EXECUTION",
-    "tool_name": "academic_query",
+    "tool_name": "get_book_location",
     "arguments": {
-      "student_id": "SV2026001"
+      "book_id": "BK001"
     },
-    "observation": {},
-    "latency_ms": 799.12
+    "observation": {
+      "status": "SUCCESS",
+      "book_id": "BK001",
+      "title": "Nhà Giả Kim",
+      "location": "Kệ A1 - Tầng 2",
+      "circulation_status": "AVAILABLE",
+      "message": "Sách được xếp tại Kệ A1 - Tầng 2."
+    },
+    "latency_ms": 1199.53
   },
   {
     "step": 2,
-    "query": "Hãy tra cứu thông tin học vụ của sinh viên SV2026001.",
+    "query": "Hãy kiểm tra vị trí kệ sách của cuốn sách có mã BK001 giúp tôi.",
     "action_type": "FINAL_ANSWER",
     "thought": "Tổng hợp kết quả từ MCP Server thành công.",
-    "output": "Chưa thể trả lời chi tiết do chưa nhận được dữ liệu từ MCP Server (hãy hoàn thành TODO 2.1).",
+    "output": "Sách được xếp tại Kệ A1 - Tầng 2.",
+    "latency_ms": 10.0
+  },
+  {
+    "step": 1,
+    "query": "Tôi đang mượn cuốn sách Rừng Na Uy có mã BK002, hãy gia hạn thời gian mượn thêm 7 ngày giúp tôi.",
+    "action_type": "TOOL_EXECUTION",
+    "tool_name": "renew_book_loan",
+    "arguments": {
+      "extra_days": 7,
+      "book_id": "BK002"
+    },
+    "observation": {
+      "status": "SUCCESS",
+      "book_id": "BK002",
+      "title": "Rừng Na Uy",
+      "old_due_date": "2026-10-05",
+      "new_due_date": "2026-10-12",
+      "extra_days": 7,
+      "message": "Gia hạn sách thành công đến ngày 2026-10-12."
+    },
+    "latency_ms": 1337.79
+  },
+  {
+    "step": 2,
+    "query": "Tôi đang mượn cuốn sách Rừng Na Uy có mã BK002, hãy gia hạn thời gian mượn thêm 7 ngày giúp tôi.",
+    "action_type": "FINAL_ANSWER",
+    "thought": "Tổng hợp kết quả từ MCP Server thành công.",
+    "output": "Gia hạn sách thành công đến ngày 2026-10-12.",
+    "latency_ms": 10.0
+  },
+  {
+    "step": 1,
+    "query": "Kiểm tra giúp tôi tình trạng cuốn sách có mã BK003 xem có ai đang mượn không, nếu đang mượn thì gia hạn thêm 14 ngày giúp tôi.",
+    "action_type": "TOOL_EXECUTION",
+    "tool_name": "get_book_status",
+    "arguments": {
+      "book_id": "BK003"
+    },
+    "observation": {
+      "status": "SUCCESS",
+      "book_id": "BK003",
+      "title": "Lược Sử Loài Người",
+      "circulation_status": "BORROWED",
+      "display_status": "Đang được mượn",
+      "due_date": "2026-09-25",
+      "message": "Sách 'Lược Sử Loài Người' hiện đang được mượn. Ngày hẹn trả hiện tại: 2026-09-25."
+    },
+    "latency_ms": 1211.2
+  },
+  {
+    "step": 2,
+    "query": "Kiểm tra giúp tôi tình trạng cuốn sách có mã BK003 xem có ai đang mượn không, nếu đang mượn thì gia hạn thêm 14 ngày giúp tôi.",
+    "action_type": "FINAL_ANSWER",
+    "thought": "Tổng hợp kết quả từ MCP Server thành công.",
+    "output": "Sách 'Lược Sử Loài Người' hiện đang được mượn. Ngày hẹn trả hiện tại: 2026-09-25.",
+    "latency_ms": 10.0
+  },
+  {
+    "step": 1,
+    "query": "Vui lòng kiểm tra vị trí và tình trạng của cuốn sách có mã BK9999999 trong thư viện.",
+    "action_type": "TOOL_EXECUTION",
+    "tool_name": "get_book_location",
+    "arguments": {
+      "book_id": "BK9999999"
+    },
+    "observation": {
+      "status": "NOT_FOUND",
+      "message": "Không tìm thấy sách có mã 'BK9999999'."
+    },
+    "latency_ms": 1227.61
+  },
+  {
+    "step": 2,
+    "query": "Vui lòng kiểm tra vị trí và tình trạng của cuốn sách có mã BK9999999 trong thư viện.",
+    "action_type": "FINAL_ANSWER",
+    "thought": "Tổng hợp kết quả từ MCP Server thành công.",
+    "output": "Không tìm thấy sách có mã 'BK9999999'.",
     "latency_ms": 10.0
   }
 ]

@@ -1,0 +1,37 @@
+[
+  {
+    "id": "TC01",
+    "type": "direct_query",
+    "question": "Chào bạn, bạn có thể cho tôi biết quy định chung về thời gian mượn sách và số lượng sách tối đa được mượn tại thư viện không?",
+    "expected_behavior": "Agent trả lời trực tiếp từ kiến thức chung hoặc System Prompt về quy định mượn trả của thư viện mà không cần gọi bất kỳ Tool nào.",
+    "complexity": "Low"
+  },
+  {
+    "id": "TC02",
+    "type": "single_tool_query",
+    "question": "Hãy kiểm tra vị trí kệ sách của cuốn sách có mã BK001 giúp tôi.",
+    "expected_behavior": "Agent nhận diện nhu cầu tra cứu vị trí sách, tự động phát sinh Tool Call 'get_book_location' với mã sách 'BK001'.",
+    "complexity": "Medium"
+  },
+  {
+    "id": "TC03",
+    "type": "single_tool_action",
+    "question": "Tôi đang mượn cuốn sách Rừng Na Uy có mã BK002, hãy gia hạn thời gian mượn thêm 7 ngày giúp tôi.",
+    "expected_behavior": "Agent nhận diện nhu cầu gia hạn sách, tự động phát sinh Tool Call 'renew_book_loan' với book_id='BK002' và extra_days=7.",
+    "complexity": "Medium"
+  },
+  {
+    "id": "TC04",
+    "type": "multi_step_reasoning",
+    "question": "Kiểm tra giúp tôi tình trạng cuốn sách có mã BK003 xem có ai đang mượn không, nếu đang mượn thì gia hạn thêm 14 ngày giúp tôi.",
+    "expected_behavior": "Agent thực hiện chuỗi suy luận ReAct đa bước: Đầu tiên gọi Tool 'get_book_status' với mã 'BK003' để xác nhận sách đang ở trạng thái BORROWED, sau đó tiếp tục gọi Tool 'renew_book_loan' với extra_days=14 để gia hạn sách.",
+    "complexity": "High"
+  },
+  {
+    "id": "TC05",
+    "type": "edge_case_handling",
+    "question": "Vui lòng kiểm tra vị trí và tình trạng của cuốn sách có mã BK9999999 trong thư viện.",
+    "expected_behavior": "Agent gọi Tool 'get_book_location' hoặc 'get_book_status' với book_id='BK9999999', nhận kết quả NOT_FOUND từ Tool và đưa ra phản hồi lịch sự, chính xác rằng sách không tồn tại trong hệ thống, không bịa đặt dữ liệu.",
+    "complexity": "Medium"
+  }
+]
